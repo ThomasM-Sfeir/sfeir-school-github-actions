@@ -2,6 +2,9 @@ name: Exercice4 cache
 on: 
   workflow_dispatch:
 
+env:
+  cache-name: cache-node-modules
+
 jobs:
   run-npm-install:
     runs-on: ubuntu-latest
@@ -20,8 +23,6 @@ jobs:
           run: ls 
         - name: Cache node modules
           uses: actions/cache/save@v4
-          env:
-            cache-name: cache-node-modules
           with:
             # npm cache files are stored in `~/.npm` on Linux/macOS
             path: node_modules
@@ -42,6 +43,12 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 'lts/*'
+        - name: Restore cache
+          id: cache-restore
+          uses: actions/cache/restore@v4
+          with:
+            key: ${{ runner.os }}-build-${{ env.cache-name }}
+        key: ${{ runner.os }}-primes
         - name: run test
           shell: bash
           run: |
