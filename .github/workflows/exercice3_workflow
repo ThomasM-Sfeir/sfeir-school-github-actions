@@ -1,0 +1,9 @@
+name: exercice 3 - workflow
+on: 
+  workflow_dispatch:
+
+jobs:
+  caller-workflow:
+    uses: ./.github/workflows/exercice3.yml
+    with:
+      node-version: 20
