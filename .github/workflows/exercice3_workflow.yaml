@@ -4,6 +4,6 @@ on:
 
 jobs:
   caller-workflow:
-    uses: ./.github/workflows/exercice3.yml
+    uses: https://github.com/ThomasM-Sfeir/sfeir-school-github-actions/blob/main/.github/workflows/exercice3.yaml
     with:
       node-version: '20'
