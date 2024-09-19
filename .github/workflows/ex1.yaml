@@ -1,0 +1,14 @@
+name: npm test
+on: 
+  workflow_dispatch:
+               
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set-up NodeJs
+        uses: actions/setup-node@v4
+      - name: Npm Install
+        run: npm install
