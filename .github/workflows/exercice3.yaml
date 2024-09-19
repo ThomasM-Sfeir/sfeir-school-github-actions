@@ -1,11 +1,11 @@
 name: reusable workflow
 on: 
   workflow_call:
-  inputs:
-      node-version:
-        required: false
-        type: string
-        default: 'lts/*'
+    inputs:
+        node-version:
+          required: false
+          type: string
+          default: 'lts/*'
 
 jobs:
   run-npm-test:
