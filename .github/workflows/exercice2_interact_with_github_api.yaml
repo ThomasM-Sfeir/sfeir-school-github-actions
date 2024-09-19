@@ -8,7 +8,7 @@ jobs:
     steps: 
       - id: short_sha
         run: echo "sha_short=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
-      - id: Create the issue
+      - id: create_issue
         run: |
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \
