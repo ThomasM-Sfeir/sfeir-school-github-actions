@@ -1,4 +1,4 @@
-name: Exercice4_cache
+name: Exercice4 cache
 on: 
   workflow_dispatch:
 
