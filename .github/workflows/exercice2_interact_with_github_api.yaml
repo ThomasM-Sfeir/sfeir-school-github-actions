@@ -20,4 +20,4 @@ jobs:
           --url https://api.github.com/repos/ThomasM-Sfeir/sfeir-school-github-actions/issues \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
           --header 'content-type: application/json' \
-          --data '{"title":"Issue ${{ steps.short_sha.outputs.sha_short }}","body":"Let'\''s try the issue generation.","milestone":1,"labels":["bug"]}'
+          --data '{"title":"Issue ${{ steps.short_sha.outputs.sha_short }}","body":"Let'\''s try the issue generation.","labels":["bug"]}'
