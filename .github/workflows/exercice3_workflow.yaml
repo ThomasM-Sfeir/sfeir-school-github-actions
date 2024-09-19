@@ -1,4 +1,4 @@
-name: exercice 3 - workflow
+name: test workflow
 on: 
   workflow_dispatch:
 
