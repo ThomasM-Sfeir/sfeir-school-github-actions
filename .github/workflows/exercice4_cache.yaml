@@ -12,24 +12,16 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: 'lts/*'
+        - uses: actions/cache@v4
+          with:
+            path: ./node_modules
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-node-
         - name: run install
           shell: bash
           run: |
             npm install
-        - name: List files
-          run: ls 
-        - name: Cache node modules
-          uses: actions/cache/save@v4
-          env:
-            cache-name: cache-node-modules
-          with:
-            # npm cache files are stored in `~/.npm` on Linux/macOS
-            path: node_modules
-            key: ${{ runner.os }}-build-${{ env.cache-name }}
-            restore-keys: |
-              ${{ runner.os }}-build-${{ env.cache-name }}
-              ${{ runner.os }}-build-
-              ${{ runner.os }}-
 
 
   run-npm-test:
@@ -38,15 +30,16 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: ./node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name : setup node
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-      - name: Restore cache
-        id: cache-restore
-        uses: actions/cache/restore@v4
-        with:
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
       - name: run test
         shell: bash
         run: |
