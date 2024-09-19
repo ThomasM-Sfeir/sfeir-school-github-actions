@@ -19,7 +19,7 @@ jobs:
         - name: List files
           run: ls 
         - name: Cache node modules
-          uses: actions/cache@v4
+          uses: actions/cache/save@v4
           env:
             cache-name: cache-node-modules
           with:
