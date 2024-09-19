@@ -4,6 +4,8 @@ on:
 
 jobs:
   create-issue:
+    permissions:
+      issues: write
     runs-on: ubuntu-latest
     steps: 
       - id: short_sha
@@ -17,5 +19,5 @@ jobs:
           curl --request POST \
           --url https://api.github.com/repos/ThomasM-Sfeir/sfeir-school-github-actions/issues \
           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-          --header 'Accept: application/vnd.github+json' \
+          --header 'content-type: application/json' \
           --data '{"title":"Issue ${{ steps.short_sha.outputs.sha_short }}","body":"Let'\''s try the issue generation.","milestone":1,"labels":["bug"]}'
