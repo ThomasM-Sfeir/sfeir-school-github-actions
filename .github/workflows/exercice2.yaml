@@ -1,0 +1,25 @@
+name: Switch Node version
+on: 
+  pull_request:
+
+jobs:
+  run-npm-test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkout@v4
+        - name: specify version
+          run: echo "NODE_VERSION=20" >> $GITHUB_ENV
+        - name: display node version
+          run: echo "${{ env.NODE_VERSION }}"
+        - name: setup node
+          uses: actions/setup-node@v4 
+          with:
+            node-version: '${{env.NODE_VERSION}}'
+        - name: run test
+          shell: bash
+          run: |
+            npm install
+            npm test
+        - name: Check node version
+          run: node -v
