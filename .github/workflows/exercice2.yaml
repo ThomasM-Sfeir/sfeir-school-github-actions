@@ -8,12 +8,18 @@ jobs:
     steps:
         - name: checkout
           uses: actions/checkout@v4
-        - name : setup node
-          uses: actions/setup-node@v4
+        - name: specify version
+          run: echo "NODE_VERSION=20" >> $GITHUB_ENV
+        - name: display node version
+          run: echo {{env.NODE_VERSION}}
+        - name: setup node
+          uses: actions/setup-node@v4 
           with:
-            node-version: 'lts/*'
+            node-version: '${{env.NODE_VERSION}}'
         - name: run test
           shell: bash
           run: |
             npm install
             npm test
+        - name: Check node version
+          run: echo node -v
