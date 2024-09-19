@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
                
 jobs:
-  job1:
+  job-npm-install:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repository
@@ -12,3 +12,13 @@ jobs:
         uses: actions/setup-node@v4
       - name: Npm Install
         run: npm install
+  job-npm-test:
+    needs: job-npm-install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set-up NodeJs
+        uses: actions/setup-node@v4 
+      - name: Npm Test
+        run: npm test
