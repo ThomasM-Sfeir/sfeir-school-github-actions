@@ -6,4 +6,4 @@ jobs:
   caller-workflow:
     uses: ./.github/workflows/exercice3.yml
     with:
-      node-version: 20
+      node-version: '20'
