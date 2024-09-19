@@ -30,9 +30,6 @@ jobs:
               ${{ runner.os }}-build-${{ env.cache-name }}
               ${{ runner.os }}-build-
               ${{ runner.os }}-
-        - name: Remove file
-          run: |
-            rm node_modules
 
 
   run-npm-test:
